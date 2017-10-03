@@ -34,5 +34,6 @@ GPL a MIT
 ##### Prispievatelia
 * [sveco86](https://github.com/sveco86)
 * [timelordx](https://github.com/timelordx)
+* [Lukáš Prelovský](https://nadupanyweb.sk/)
 * Jozef Giusseppe
 * and dalsi
