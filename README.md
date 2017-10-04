@@ -7,7 +7,7 @@ Majter N! je doplnok pre webove prehliadace Google Chrome a Mozilla Firefox umoz
 
 ### Google Chrome
 
-* Rozsirenie pre Chrome sa coskoro bude dat instalovat z oficialnej stranky Chrome Store.
+* [Rozsirenie pre Chrome sa instaluje z oficialnej stranky Chrome Store](https://chrome.google.com/webstore/detail/majster-n/hblocgkbkaoehofhapgpjmagalooopbd).
 * Pripadne sa da nainstalovat manualne [stiahnutim z tejto stranky](https://github.com/viliampucik/majster-n/raw/master/releases/majster-n-1.0.crx),
 * otvorenim zalozky doplnkov kliknutim na menu *-> Nastavenia -> Rozsirenia*
 * a naslednym pretiahnutim stiahnuteho *.crx* suboru do spominanej zalozky.
