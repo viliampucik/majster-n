@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Majster N!",
-	"version": "1.0",
+	"version": "1.1",
 	"description": "Read paid content on dennikn.sk",
 	"permissions": ["webRequest", "https://dennikn.sk/*"],
 	"content_scripts": [
