@@ -1,7 +1,7 @@
-Majter N! 1.0
+Majster N! 1.0
 ======
 
-Majter N! je doplnok pre webove prehliadace Google Chrome a Mozilla Firefox umoznujuci bezplatne citanie platenych clankov na [dennikn.sk](https://dennikn.sk). Staci si dane rozsirenie jednoducho nainstalovat z oficialnych stranok danych prehliadacov. Nasledne po otvoreni akehokolvek plateneho clanku sa automaticky, v priebehu par sekund nacita jeho plna verzia.
+Majster N! je doplnok pre webove prehliadace Google Chrome a Mozilla Firefox umoznujuci bezplatne citanie platenych clankov na [dennikn.sk](https://dennikn.sk). Staci si dane rozsirenie jednoducho nainstalovat z oficialnych stranok danych prehliadacov. Nasledne po otvoreni akehokolvek plateneho clanku sa automaticky, v priebehu par sekund nacita jeho plna verzia.
 
 ## Instalacia
 
