@@ -21,6 +21,18 @@ utils.isPaidArticle = function() {
 };
 
 /**
+ * Remove elements from document using selector
+ */
+utils.removeSelector = function(doc, selector) {
+	var elements = doc.querySelectorAll(selector);
+	var i = elements.length;
+	while (i--) {
+		elements[i].parentNode.removeChild(elements[i]);
+	}
+	return doc;
+};
+
+/**
  * Copy only allowed HTML elements and their styles from the remote article
  */
 utils.sanitizeContent = function(root, node) {
@@ -52,6 +64,16 @@ utils.sanitizeContent = function(root, node) {
 						}
 					}
 				}
+				else if (child.nodeName == 'DIV') {
+					if (child.hasAttribute('data-image-src') && child.hasAttribute('data-parallax')) {
+						var img = document.createElement('img');
+						img.src = child.getAttribute('data-image-src');
+						img.style.display = 'block';
+						img.style.marginLeft = 'auto';
+						img.style.marginRight = 'auto';
+						element.appendChild(img);
+					}
+				}
 				else if (child.nodeName == 'IFRAME') {
 					for (let i of ['allowfullscreen', 'frameborder', 'height', 'scrolling', 'src', 'width']) {
 						if (child.hasAttribute(i)) {
@@ -61,6 +83,20 @@ utils.sanitizeContent = function(root, node) {
 				}
 				else if (child.nodeName == 'IMG') {
 					for (let i of ['alt', 'height', 'src', 'width']) {
+						if (child.hasAttribute(i)) {
+							element.setAttribute(i, child.getAttribute(i));
+						}
+					}
+				}
+				else if (child.nodeName == 'SOURCE') {
+					for (let i of ['src', 'type']) {
+						if (child.hasAttribute(i)) {
+							element.setAttribute(i, child.getAttribute(i));
+						}
+					}
+				}
+				else if (child.nodeName == 'VIDEO') {
+					for (let i of ['autoplay', 'loop', 'poster', 'preload']) {
 						if (child.hasAttribute(i)) {
 							element.setAttribute(i, child.getAttribute(i));
 						}
@@ -91,6 +127,7 @@ utils.getArticle = function(url) {
 				var html = document.querySelector('.d-content');
 				html.innerHTML = '';
 				utils.sanitizeContent(html, doc.querySelector('body'));
+				utils.removeSelector(document, '.parallax-mirror');
 			}
 			catch (e) {
 				console.error(`majster-n: ${e}`);
