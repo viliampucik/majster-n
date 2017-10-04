@@ -35,7 +35,7 @@ utils.sanitizeContent = function(root, node) {
 			}
 			else {
 				element = document.createElement(child.nodeName);
-				if (child.id.length > 0) {
+				if (child.hasAttribute('id')) {
 					element.id = child.id;
 				}
 				if (child.className.length > 0) {
@@ -46,15 +46,24 @@ utils.sanitizeContent = function(root, node) {
 				}
 
 				if (child.nodeName == 'A') {
-					element.href = child.href;
+					for (let i of ['href', 'name', 'rel']) {
+						if (child.hasAttribute(i)) {
+							element.setAttribute(i, child.getAttribute(i));
+						}
+					}
 				}
 				else if (child.nodeName == 'IFRAME') {
-					element.src = child.src;
+					for (let i of ['allowfullscreen', 'frameborder', 'height', 'scrolling', 'src', 'width']) {
+						if (child.hasAttribute(i)) {
+							element.setAttribute(i, child.getAttribute(i));
+						}
+					}
 				}
 				else if (child.nodeName == 'IMG') {
-					element.src = child.src;
-					if (child.alt.length > 0) {
-						element.alt = child.alt;
+					for (let i of ['alt', 'height', 'src', 'width']) {
+						if (child.hasAttribute(i)) {
+							element.setAttribute(i, child.getAttribute(i));
+						}
 					}
 				}
 
@@ -84,7 +93,7 @@ utils.getArticle = function(url) {
 				utils.sanitizeContent(html, doc.querySelector('body'));
 			}
 			catch (e) {
-				console.log(`majster-n: ${e}`);
+				console.error(`majster-n: ${e}`);
 			}
 		}
 	};
