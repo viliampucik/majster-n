@@ -58,20 +58,21 @@ utils.sanitizeContent = function(root, node) {
 				}
 
 				if (child.nodeName == 'A') {
-					for (let i of ['href', 'name', 'rel']) {
+					for (let i of ['href', 'name', 'rel', 'target']) {
 						if (child.hasAttribute(i)) {
 							element.setAttribute(i, child.getAttribute(i));
 						}
 					}
 				}
 				else if (child.nodeName == 'DIV') {
-					if (child.hasAttribute('data-image-src') && child.hasAttribute('data-parallax')) {
+					if (child.hasAttribute('data-image-src') && child.hasAttribute('data-parallax') && element.className == 'parallax-window') {
 						var img = document.createElement('img');
 						img.src = child.getAttribute('data-image-src');
 						img.style.display = 'block';
 						img.style.marginLeft = 'auto';
 						img.style.marginRight = 'auto';
 						element.appendChild(img);
+						element.removeAttribute('class');
 					}
 				}
 				else if (child.nodeName == 'IFRAME') {
@@ -82,7 +83,7 @@ utils.sanitizeContent = function(root, node) {
 					}
 				}
 				else if (child.nodeName == 'IMG') {
-					for (let i of ['alt', 'height', 'src', 'width']) {
+					for (let i of ['alt', 'height', 'src', 'srcset', 'sizes', 'width']) {
 						if (child.hasAttribute(i)) {
 							element.setAttribute(i, child.getAttribute(i));
 						}
@@ -128,6 +129,11 @@ utils.getArticle = function(url) {
 				html.innerHTML = '';
 				utils.sanitizeContent(html, doc.querySelector('body'));
 				utils.removeSelector(document, '.parallax-mirror');
+
+				var script = document.createElement('script');
+				script.textContent = 'new Lightbox;';
+				(document.body || document.head || document.documentElement).appendChild(script);
+				script.remove();
 			}
 			catch (e) {
 				console.error(`majster-n: ${e}`);
